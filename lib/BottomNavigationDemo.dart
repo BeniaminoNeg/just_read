@@ -13,7 +13,7 @@ class BottomNavigationDemo extends StatefulWidget {
 class _BottomNavigationDemoState extends State<BottomNavigationDemo>
     with TickerProviderStateMixin {
   int _currentIndex = 0;
-  BottomNavigationBarType _type = BottomNavigationBarType.shifting;
+  BottomNavigationBarType _type = BottomNavigationBarType.fixed;
   List<NavigationIconView> _navigationViews;
 
   @override
@@ -21,35 +21,23 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo>
     super.initState();
     _navigationViews = <NavigationIconView>[
       new NavigationIconView(
-        icon: const Icon(Icons.access_alarm),
-        title: 'Alarm',
+        icon: const Icon(Icons.home),
+        title: 'Home',
         color: Colors.deepPurple,
         vsync: this,
       ),
       new NavigationIconView(
-        icon: new CustomIcon(),
-        title: 'Box',
+        icon: new Icon(Icons.import_contacts),
+        title: 'Libreria',
         color: Colors.deepOrange,
         vsync: this,
       ),
       new NavigationIconView(
-        icon: const Icon(Icons.cloud),
-        title: 'Cloud',
+        icon: const Icon(Icons.format_quote),
+        title: 'Citazioni',
         color: Colors.teal,
         vsync: this,
       ),
-      new NavigationIconView(
-        icon: const Icon(Icons.favorite),
-        title: 'Favorites',
-        color: Colors.indigo,
-        vsync: this,
-      ),
-      new NavigationIconView(
-        icon: const Icon(Icons.event_available),
-        title: 'Event',
-        color: Colors.pink,
-        vsync: this,
-      )
     ];
 
     for (NavigationIconView view in _navigationViews)
@@ -108,25 +96,9 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo>
 
     return new Scaffold(
       appBar: new AppBar(
-        title: const Text('Bottom navigation'),
+        title: const Text('JustRead!'),
         actions: <Widget>[
-          new PopupMenuButton<BottomNavigationBarType>(
-            onSelected: (BottomNavigationBarType value) {
-              setState(() {
-                _type = value;
-              });
-            },
-            itemBuilder: (BuildContext context) => <PopupMenuItem<BottomNavigationBarType>>[
-              const PopupMenuItem<BottomNavigationBarType>(
-                value: BottomNavigationBarType.fixed,
-                child: const Text('Fixed'),
-              ),
-              const PopupMenuItem<BottomNavigationBarType>(
-                value: BottomNavigationBarType.shifting,
-                child: const Text('Shifting'),
-              )
-            ],
-          )
+
         ],
       ),
       body: new Center(
